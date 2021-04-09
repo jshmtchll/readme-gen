@@ -2,6 +2,7 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 const Choices = require('inquirer/lib/objects/choices');
+const generateMarkdown = require('./utils/generateMarkdown');
 
 // TODO: Create an array of questions for user input
 function promptUser() {
@@ -45,7 +46,8 @@ function promptUser() {
                 '[MIT License]',
                 '[Mozilla Public License 2.0]',
                 '[Apache 2.0 License]',
-                '[Creative Commons]'
+                '[Creative Commons]',
+                '[None]'
             ]
         },
         {
@@ -57,16 +59,19 @@ function promptUser() {
             type: 'input',
             name: 'email',
             message: 'What is your email?'
-        }
+        },      
     ]);
+    
 }
 
-// TODO: Create a function to write README file
-//function writeToFile(fileName, data) {}
 
-// TODO: Create a function to initialize app
-//function init() {}
-
-// Function call to initialize app
-//init();
-promptUser();
+promptUser()
+    .then(answers => generateMarkdown(answers))
+    .then(readme => 
+        {fs.writeFile("README.MD", readme, err => {
+            if (err) {
+                console.log(err);
+                return;
+            }
+        })
+    })
