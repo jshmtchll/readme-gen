@@ -39,15 +39,15 @@ function promptUser() {
             message: 'Provide test instructions if there are any.'
         },
         {
-            type: 'checkbox',
+            type: 'list',
             name: 'license',
             message: 'Does this project have a license?',
             choices: [
-                '[MIT License]',
-                '[Mozilla Public License 2.0]',
-                '[Apache 2.0 License]',
-                '[Creative Commons]',
-                '[None]'
+                'MIT',
+                'Mozilla',
+                'Apache',
+                'CreativeCommons',
+                'None'
             ]
         },
         {
