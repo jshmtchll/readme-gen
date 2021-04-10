@@ -1,4 +1,3 @@
-// TODO: Create a function to generate markdown for README
 function generateMarkdown(answers) {
   const { projectName, description, installation, projectUse, contributions, test, license, githubUsername, email } = answers
   return `
